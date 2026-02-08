@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Out Loud | Leadership Development & Executive Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-primary: #2F5D50;
+            --green-soft: #D8DDCF;
+            --neutral-stone: #E6E3DA;
+            --neutral-offwhite: #F5F5F2;
+            --text-primary: #1F1F1F;
+            --text-secondary: #6F6F6A;
+            --accent-gold: #B59A5A;
+            --border-subtle: #CFCFC6;
+            
+            --spacing-xs: 4px;
+            --spacing-s: 8px;
+            --spacing-m: 16px;
+            --spacing-l: 24px;
+            --spacing-xl: 40px;
+            --spacing-xxl: 64px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--neutral-stone);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-m);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            max-width: 720px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-xxl);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: var(--spacing-xl);
+        }
+
+        p {
+            margin-bottom: var(--spacing-m);
+            max-width: 720px;
+        }
+
+        a {
+            color: var(--green-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Layout & Containers */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-l);
+        }
+
+        .content-wrapper {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-l);
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--neutral-offwhite);
+            padding: var(--spacing-m) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 0 var(--border-subtle);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--green-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-l);
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            padding: var(--spacing-xs) var(--spacing-s);
+            border-radius: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--green-primary);
+            background-color: var(--green-soft);
+            outline: none;
+        }
+
+        .nav-links a:focus {
+            box-shadow: 0 0 0 2px var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            color: var(--green-primary);
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: var(--spacing-s);
+            right: var(--spacing-s);
+            height: 2px;
+            background-color: var(--green-primary);
+            border-radius: 1px;
+        }
+
+        /* Sections */
+        section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .section-bg-stone {
+            background-color: var(--neutral-stone);
+        }
+
+        .section-bg-offwhite {
+            background-color: var(--neutral-offwhite);
+        }
+
+        .section-bg-sage {
+            background-color: var(--green-soft);
+        }
+
+        .section-title {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-title.text-center {
+            text-align: center;
+        }
+
+        .section-title h2 {
+            margin-top: 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--green-primary);
+            color: var(--neutral-offwhite);
+            padding: var(--spacing-m) var(--spacing-l);
+            border: none;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--accent-gold);
+            color: var(--neutral-offwhite);
+            outline: none;
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 3px rgba(181, 154, 90, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--green-primary);
+            border: 1px solid var(--green-primary);
+            padding: var(--spacing-m) var(--spacing-l);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background-color: var(--green-soft);
+            outline: none;
+        }
+
+        .btn-secondary:focus {
+            box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--neutral-offwhite);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 900px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-l);
+        }
+
+        .hero-tagline {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xl);
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-l);
+            line-height: 1.7;
+        }
+
+        .hero-emphasis {
+            font-size: 1.25rem;
+            color: var(--green-primary);
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-m) var(--spacing-l);
+            background-color: var(--green-soft);
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .hero-cta {
+            margin-top: var(--spacing-l);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(47, 93, 80, 0.15);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-l);
+            margin-top: var(--spacing-l);
+        }
+
+        .card {
+            background-color: var(--neutral-offwhite);
+            padding: var(--spacing-l);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(47, 93, 80, 0.12);
+            border-color: var(--green-primary);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        /* Services Section */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-l);
+        }
+
+        .service-item {
+            background-color: var(--neutral-offwhite);
+            padding: var(--spacing-xl);
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .service-item h3 {
+            color: var(--green-primary);
+            margin-bottom: var(--spacing-s);
+        }
+
+        .service-item ul {
+            list-style: disc;
+            padding-left: var(--spacing-m);
+            margin-top: var(--spacing-s);
+        }
+
+        .service-item li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .about-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(47, 93, 80, 0.12);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--neutral-offwhite);
+            padding: var(--spacing-xl);
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-l);
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-bottom: var(--spacing-s);
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--spacing-m);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background-color: var(--neutral-offwhite);
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.15);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-help {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--neutral-offwhite);
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            text-align: center;
+            padding: 0 var(--spacing-m);
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+                text-align: left;
+                gap: var(--spacing-l);
+                padding: 0;
+            }
+        }
+
+        .footer-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--green-primary);
+            margin-bottom: var(--spacing-s);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-s);
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .footer-links a:hover {
+            color: var(--green-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: var(--spacing-m);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background-color: var(--border-subtle);
+            margin: var(--spacing-xl) 0;
+            border: none;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .mt-m {
+            margin-top: var(--spacing-m);
+        }
+
+        .mt-xl {
+            margin-top: var(--spacing-xl);
+        }
+
+        .mb-xl {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .mt-xxl {
+            margin-top: var(--spacing-xxl);
+        }
+
+        .mb-xxl {
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .container,
+            .content-wrapper {
+                padding: 0 var(--spacing-m);
+            }
+            
+            section {
+                padding: var(--spacing-xl) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Lead Out Loud</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <h1>Lead through change without losing yourself — or your people.</h1>
+                    <p class="hero-tagline">Leadership Development & Executive Coaching for Senior Leaders</p>
+                    <p>I work with leaders who are operating in complex, demanding environments and are expected to remain steady, visible, and credible, even when the ground beneath them is shifting.</p>
+                    <p>My work supports senior leaders, particularly women, to reclaim their voice, authority, and presence — so they can lead out loud with confidence, clarity, and humanity.</p>
+                    <p class="hero-emphasis"><strong>This is about leading without self-erasure.</strong><br>About staying grounded while navigating change.<br>And about showing up fully, without losing yourself or the people you lead.</p>
+                    <p class="mt-xl">If you would like to learn more or explore whether this work might be a good fit, I invite you to email me to start a conversation.</p>
+                    <a href="#contact" class="btn btn-primary hero-cta">Start a Conversation</a>
+                </div>
+                <div class="hero-image-container">
+                    <img src="images/home-image.jpg" alt="Leadership coaching" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-bg-sage">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Yvonne Egbuna</h2>
+            </div>
+            <div class="about-content">
+                <div>
+                    <p>Yvonne Egbuna is a leadership speaker and executive coach who supports corporate leaders and senior women to reclaim their voice, confidence, and authority.</p>
+                    <p>With over twenty years' experience leading leadership development and organisational change across public and private sector organisations, she brings a rare blend of lived experience, emotional intelligence, and senior leadership credibility. Her work is grounded, reflective, and practical, supporting leaders to show up visibly, speak with clarity, and lead with humanity in complex environments.</p>
+                    <p>Yvonne is known for creating spaces where leaders feel safe enough to think differently — and brave enough to lead authentically. Her speaking and coaching combine lived experience with deep organisational insight, helping senior leaders and women in leadership reconnect with their voice, presence, and authority.</p>
+                    <p><strong>Her work is not about performance or polish.</strong><br>It is about presence, integrity, and leadership that is both effective and deeply human.</p>
+                </div>
+                <div>
+                    <img src="images/about-image.jpg" alt="Yvonne Egbuna" class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-bg-sage">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services</h2>
+                <p class="text-secondary">I work with leaders who have learned to stay small — and are ready to remember how to lead out loud.</p>
+            </div>
+            <div class="content-wrapper">
+                <p>My work reconnects senior leaders, particularly women, with their voice, authority, and presence, so they can lead with confidence, credibility, and humanity — even within complex organisational systems.</p>
+                <p><strong>This is not about fixing individuals.</strong><br>It is about supporting leaders to show up fully, without self-erasure, and to lead in ways that are both effective and deeply human.</p>
+            </div>
+            
+            <div class="section-title mt-xxl">
+                <h2>How I Work With Organisations</h2>
+                <p>My services are designed to support leaders and organisations navigating change, complexity, and visibility — with a strong emphasis on inclusive leadership and psychological safety.</p>
+            </div>
+            
+            <div class="services-list">
+                <div class="service-item">
+                    <h3>Keynotes & Executive Talks</h3>
+                    <p>I deliver keynote talks and executive briefings for senior leadership audiences, with a focus on inclusive leadership, psychological safety, and advocacy in leadership.</p>
+                    <p>These sessions are reflective, grounded, and practical — designed to provoke thought, surface insight, and support meaningful conversation at leadership level.</p>
+                    <p>They are particularly relevant for organisations seeking to:</p>
+                    <ul>
+                        <li>Strengthen inclusive leadership capability</li>
+                        <li>Support women leaders at senior levels</li>
+                        <li>Build cultures where people can speak, contribute, and lead openly</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Leadership & Organisational Development Programmes</h3>
+                    <p>I design and support leadership and organisational development programmes that embed inclusive leadership as a lived practice — not a policy statement.</p>
+                    <p>This work focuses on building high-performing, psychologically safe cultures where leaders are equipped to navigate complexity, difference, and uncertainty with confidence and care.</p>
+                    <p>Programmes are tailored to organisational context and may support:</p>
+                    <ul>
+                        <li>Leadership capability development</li>
+                        <li>Culture change initiatives</li>
+                        <li>Long-term inclusion and psychological safety goals</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Executive Coaching & Leadership Advisory</h3>
+                    <p>I offer executive coaching and advisory support for senior leaders and women leaders navigating complexity, transitions, and increased visibility.</p>
+                    <p>This work provides a confidential, reflective space for leaders to:</p>
+                    <ul>
+                        <li>Reconnect with their leadership voice and authority</li>
+                        <li>Navigate organisational dynamics and power structures</li>
+                        <li>Lead with clarity, confidence, and presence</li>
+                    </ul>
+                    <p>Coaching is grounded, thoughtful, and responsive to the realities of senior leadership.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-xl">
+                <h3>Starting the Conversation</h3>
+                <p>If you would like to explore whether this work is a good fit for you or your organisation, I invite you to get in touch by email to start a conversation.</p>
+                <p>There is no obligation — just an opportunity to talk, reflect, and explore what support might be most useful.</p>
+                <a href="#contact" class="btn btn-primary">Email to Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="section-bg-sage">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Approach</h2>
+                <p class="text-secondary">Reflective, grounded, and practical</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Leadership Identity & Visibility</h3>
+                    <p>We explore how you see yourself as a leader and how others experience you. This includes communication presence, executive visibility, and the stories you tell yourself about your leadership.</p>
+                </div>
+                <div class="card">
+                    <h3>Psychological Safety</h3>
+                    <p>We examine how you create environments where people feel safe to speak up, take risks, and bring their whole selves to work — and how you cultivate this for yourself as well.</p>
+                </div>
+                <div class="card">
+                    <h3>Inclusive Leadership</h3>
+                    <p>We focus on human-centred leadership practices that honour difference, distribute power thoughtfully, and create conditions where diverse perspectives can thrive.</p>
+                </div>
+                <div class="card">
+                    <h3>Organisational Complexity</h3>
+                    <p>We navigate the systems, politics, and dynamics that shape leadership effectiveness — helping you work with complexity rather than being overwhelmed by it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-bg-offwhite">
+        <div class="container">
+            <div class="section-title">
+                <h2>Begin a Conversation</h2>
+                <p class="text-secondary">Leadership development begins with a conversation about what matters most to you</p>
+            </div>
+            <div class="contact-info">
+                <p>I'd welcome the opportunity to hear about your leadership journey and explore whether we might work well together.</p>
+                <p class="mt-m"><strong>Email:</strong> <a href="mailto:hello@leadoutloud.com">hello@leadoutloud.com</a></p>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What would you like to explore together?</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                        <p class="form-help">This helps me understand your context and prepare for our conversation.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Lead Out Loud</div>
+                    <p>Executive coaching and leadership development for senior leaders ready to reclaim their voice, authority, and presence.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#approach">Approach</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@leadoutloud.com">hello@leadoutloud.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="text-center">
+                <p class="copyright">© 2026 Lead Out Loud. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real implementation, you would send this data to a server
+                // For now, we'll just show a success message
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                };
+                
+                // Show success message
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                
+                submitButton.textContent = 'Message Sent';
+                submitButton.disabled = true;
+                submitButton.style.backgroundColor = 'var(--accent-gold)';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.backgroundColor = '';
+                    
+                    alert('Thank you for your message. I will be in touch soon.');
+                }, 1500);
+            });
+        }
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
